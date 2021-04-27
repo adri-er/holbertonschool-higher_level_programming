@@ -10,7 +10,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *copy = list;
 
-	if (!list)
+	if (list == NULL || *list == '\0')
 		return (0);
 
 	list = list->next;
