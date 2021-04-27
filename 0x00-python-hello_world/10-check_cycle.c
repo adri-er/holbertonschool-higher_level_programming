@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * check_cycle - Checks if a singly linked list has a cycle in it.
@@ -10,7 +9,6 @@
 int check_cycle(listint_t *list)
 {
 	listint_t *copy = list;
-	int ans = 0;
 
 	if (!list)
 		return (0);
@@ -18,40 +16,11 @@ int check_cycle(listint_t *list)
 	list = list->next;
 	while (list)
 	{
-		printf("%p : %p\n", (char *)copy, (char *)list);
-		ans = compare_string((char *)list, (char *)copy);
-		if (ans == 0)
+		if (copy == list)
 		{
 			return (1);
 		}
 		list = list->next;
 	}
 	return (0);
-}
-
-/**
- * compare_string - compares two strings.
- * @str1: string 1.
- * @str2: string 2.
- *
- * Return: 0 if same, any other number instead.
- */
-int compare_string(char *str1, char *str2)
-{
-	if (!str1 || !str2)
-	{
-		return (0);
-	}
-
-	while (*str1)
-	{
-		if (*str1 != *str2)
-		{
-			break;
-		}
-		str1++;
-		str2++;
-	}
-
-	return (*str1 - *str2);
 }
