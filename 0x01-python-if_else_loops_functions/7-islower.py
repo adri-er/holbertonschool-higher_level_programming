@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def islower(c):
     for letter in c:
         if (97 <= ord(letter) < 123):
