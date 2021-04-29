@@ -8,19 +8,20 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *copy = list;
+	const listint_t *turtle = list;
+	const listint_t *hare = list;
 
 	if (list == NULL)
 		return (0);
 
-	list = list->next;
-	while (list)
+	while (hare != NULL && hare->next != NULL)
 	{
-		if (copy == list)
+		hare = hare->next->next;
+		turtle = turtle->next;
+		if (turtle == hare)
 		{
 			return (1);
 		}
-		list = list->next;
 	}
 	return (0);
 }
