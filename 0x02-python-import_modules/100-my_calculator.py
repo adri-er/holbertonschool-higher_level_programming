@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from sys import argv, exit
-import calculator_1 as calc
+from calculator_1 import add, sub, mul, div
 
 if __name__ == "__main__":
     if (len(argv) != 4):
@@ -10,13 +10,13 @@ if __name__ == "__main__":
     a = int(argv[1])
     b = int(argv[3])
     if (operator == "+"):
-        print("{} + {} = {}".format(a, b, calc.add(a, b)))
+        print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
     elif (operator == "-"):
-        print("{} - {} = {}".format(a, b, calc.sub(a, b)))
-    elif (operator == "*"):
-        print("{} * {} = {}".format(a, b, calc.mul(a, b)))
+        print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
+    elif (operator == '*'):
+        print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
     elif (operator == "/"):
-        print("{} / {} = {}".format(a, b, calc.div(a, b)))
+        print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
