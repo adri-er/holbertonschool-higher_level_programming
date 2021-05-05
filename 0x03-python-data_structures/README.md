@@ -32,7 +32,7 @@ Each file is a script and executes with python3. Thereby each executable can be 
 
 ## Built with 🛠️
 
-_The whole repository based on high level programming phase of Holberton School foundations is constructed in C_
+_The whole repository based on high level programming phase of Holberton School foundations is constructed in Python_
 
 ## Authors ✒️
 
