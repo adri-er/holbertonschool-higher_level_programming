@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * length_linked_list - determines the length of a linked list.
@@ -58,7 +57,7 @@ int is_palindrome(listint_t **head)
 {
 	int length = 0, *array_numbers, i, j;
 
-	if (head == NULL)
+	if (head == NULL || *head == NULL)
 	{
 		return (1);
 	}
