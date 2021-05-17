@@ -4,16 +4,16 @@ With this project I had the first contact with exceptions, understanding the dif
 
 | File      | Description |
 | ----------- | ----------- |
-| [0-safe_print_list.py]() | Prints x elements of a list, handling exceptions of type and index. |
-| [1-safe_print_integer.py]() | Prints an integer with "{:d}".format() handling type exceptions. |
-| [2-safe_print_list_integers.py]() | Prints the first x elements of a list and only integers, avoiding case it is out of index. |
-| [3-safe_print_division.py]() | Divides 2 integers and prints the result using finally. |
-| [4-list_division.py]() | Divides element by element of two lists handling exceptions of type, size and value. |
-| [5-raise_exception.py]() | Raises a type exception. |
-| [6-raise_exception_msg.py]() | Raises a name exception with a message. |
-| [100-safe_print_integer_err.py]() | Prints an integer, if exception occurs prints the error on the stderr. |
-| [101-safe_function.py]() | Executes a function safely. |
-| [102-magic_calculation.py]() | Function that emulates a bytecode file. |
+| [0-safe_print_list.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/0-safe_print_list.py) | Prints x elements of a list, handling exceptions of type and index. |
+| [1-safe_print_integer.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/1-safe_print_integer.py) | Prints an integer with "{:d}".format() handling type exceptions. |
+| [2-safe_print_list_integers.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/2-safe_print_list_integers.py) | Prints the first x elements of a list and only integers, avoiding case it is out of index. |
+| [3-safe_print_division.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/3-safe_print_division.py) | Divides 2 integers and prints the result using finally. |
+| [4-list_division.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/4-list_division.py) | Divides element by element of two lists handling exceptions of type, size and value. |
+| [5-raise_exception.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/5-raise_exception.py) | Raises a type exception. |
+| [6-raise_exception_msg.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/6-raise_exception_msg.py) | Raises a name exception with a message. |
+| [100-safe_print_integer_err.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/100-safe_print_integer_err.py) | Prints an integer, if exception occurs prints the error on the stderr. |
+| [101-safe_function.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/101-safe_function.py) | Executes a function safely. |
+| [102-magic_calculation.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x05-python-exceptions/102-magic_calculation.py) | Function that emulates a bytecode file. |
 
 
 ## Usage ⚙️
