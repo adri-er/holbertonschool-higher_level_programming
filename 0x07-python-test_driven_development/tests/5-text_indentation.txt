@@ -1,0 +1,41 @@
+===============================
+Test cases for 5-text_indentation.py
+===============================
+``text_indentation(text)`` prints a text with 2 new lines after 
+each of these characters: ., ? and :
+Check if the file has root permission
+    >>> import os
+	>>> os.access('5-text_indentation.py', os.X_OK)
+	True
+	>>> os.access('5-text_indentation.py', os.F_OK)
+	True
+
+Check casual use
+	>>> indent = __import__("5-text_indentation")
+	>>> indent.text_indentation("Hello. How are you? Bye")
+	Hello.
+	<BLANKLINE>
+	How are you?
+	<BLANKLINE>
+	Bye
+	>>> indent.text_indentation("Hello. How are you?: Bye")
+	Hello.
+	<BLANKLINE>
+	How are you?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	Bye
+
+Check text empty
+	>>> indent.text_indentation("")
+
+Check type of value
+	>>> indent.text_indentation(127)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+	>>> indent.text_indentation()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'

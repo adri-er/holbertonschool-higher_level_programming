@@ -1,0 +1,58 @@
+===============================
+Test cases for 0-add_integer.py
+===============================
+Numbers
+=======
+``add_integers()`` returns the sum of 2 arguments, equivalent to use "+"
+Check if the file has root permission
+      	>>> import os
+	>>> os.access('0-add_integer.py', os.X_OK)
+	True
+	>>> os.access('0-add_integer.py', os.F_OK)
+	True
+
+Check normal use with two integers
+	>>> add_int = __import__("0-add_integer")
+	>>> add_int.add_integer(2, 3)
+	5
+
+Case no value is introduced or None is passed
+     	>>> add_int.add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+	>>> add_int.add_integer(None)
+	Traceback (most recent call last):
+        ...
+	TypeError: a must be an integer
+
+Use it for cases a second value isn't inserted
+	>>> add_int.add_integer(-2)
+	96
+
+It also works with floating-point values, casting to int.
+	>>> add_int.add_integer(2.8, 3)
+	5
+	>>> add_int.add_integer(2, 3.8)
+	5
+
+Non-Numbers
+===========
+Since the operation is adding integers, any type different from int or float
+raises an error.
+	>>> add_int.add_integer('Hello', 3)
+	Traceback (most recent call last):
+        ...
+	TypeError: a must be an integer
+	>>> add_int.add_integer(3, 'Hello')
+	Traceback (most recent call last):
+        ...
+	TypeError: b must be an integer
+	>>> add_int.add_integer('Hello', 'World')
+	Traceback (most recent call last):
+        ...
+	TypeError: a must be an integer
+	>>> add_int.add_integer(1.8, 1000e1000)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer

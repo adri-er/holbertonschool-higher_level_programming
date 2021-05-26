@@ -1,0 +1,44 @@
+===============================
+Test cases for 4-print_square.py
+===============================
+``print_square(size):`` prints square based on a size from parameter
+Check if the file has root permission
+    >>> import os
+	>>> os.access('4-print_square.py', os.X_OK)
+	True
+	>>> os.access('4-print_square.py', os.F_OK)
+	True
+
+Check normal use
+	>>> file_p_square = __import__("4-print_square")
+	>>> file_p_square.print_square(4)
+	####
+	####
+	####
+	####
+
+Check 0 size is passed
+	>>> file_p_square.print_square(0)
+
+Check type of value
+	>>> file_p_square.print_square("Hello")
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+	>>> file_p_square.print_square([10])
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+	>>> file_p_square.print_square(-3)
+	Traceback (most recent call last):
+	...
+	ValueError: size must be >= 0
+	>>> file_p_square.print_square(-3.0)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> file_p_square.print_square()
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() missing 1 required positional argument: 'size'

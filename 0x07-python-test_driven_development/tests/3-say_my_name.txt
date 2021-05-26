@@ -1,0 +1,45 @@
+===============================
+Test cases for 3-say_my_name.py
+===============================
+``say_my_name()`` prints My name is <first name> <last name>
+Check if the file has root permission
+    >>> import os
+	>>> os.access('3-say_my_name.py', os.X_OK)
+	True
+	>>> os.access('3-say_my_name.py', os.F_OK)
+	True
+
+Check normal use
+	>>> say_name = __import__("3-say_my_name")
+	>>> say_name.say_my_name("John", "Smith")
+	My name is John Smith
+
+Check just name is passed
+	>>> say_name.say_my_name("John")
+	My name is John 
+
+Check no name passed
+	>>> say_name.say_my_name()
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+
+Fail cases
+===========
+Since the operation is forming a phrase, any type different from str
+raises an error
+	>>> say_name.say_my_name("Agent", 700)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+	>>> say_name.say_my_name([0, 0, 7], "Bond")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+	>>> say_name.say_my_name(None, 23)
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
