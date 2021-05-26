@@ -15,8 +15,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([-100]), -100)
         self.assertEqual(max_integer([]), None)
         self.assertEqual(max_integer(), None)
+        self.assertEqual(max_integer([None]), None)
         self.assertEqual(max_integer(['a', 'b', 'c', 'd']), 'd')
-        self.assertEqual(max_integer("Hello29z"), 'z')
         self.assertEqual(max_integer("Hello29z"), 'z')
         self.assertEqual(max_integer({1: 100, 2: 300, 3: 0, 0: 500}), 500)
 
@@ -28,5 +28,3 @@ class TestMaxInteger(unittest.TestCase):
             max_integer(["hello", "Python", 3, {'World': 'yes'}])
         with self.assertRaises(KeyError):
             max_integer({22: "hello", "today": 25})
-        with self.assertRaises(TypeError):
-            max_integer([None])
