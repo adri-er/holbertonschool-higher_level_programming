@@ -2,6 +2,8 @@
 
 With this project I had a closer contact with how everything is an object in Python, understanding mutable and immutable objects and how does this affect while programming in this language. This gave me knowledge of what and when a variable is a reference, an assigment or an alias. As well, how does Python pass variables to a function in which cases it changes and when it causes nothing. The files in this repository are not related to python coding or functions, they are mainly text files that answer to a series of questions.  
 
+For more information about the topic, the blog created by the author about this project can be found [↪️here](https://2903.medium.com/python3-mutable-immutable-everything-is-object-c64395a26da0).
+
 | File      | Description |
 | ----------- | ----------- |
 | [19-copy_list.py](https://github.com/adri-er/holbertonschool-higher_level_programming/blob/main/0x09-python-everything_is_object/19-copy_list.py) | Function that returns the copy a list. |
