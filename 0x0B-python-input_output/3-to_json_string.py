@@ -3,7 +3,6 @@
 In this module a single function that returns JSON of an object.
 """
 import json
-from typing import Type
 
 
 def to_json_string(my_obj):
