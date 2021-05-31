@@ -6,15 +6,11 @@ import json
 
 
 def to_json_string(my_obj):
-	""" Returns the JSON representation of
-	an object (string). Serializes.
+    """ Returns the JSON representation of
+    an object (string). Serializes.
 
-	Args:
-		my_obj (str): String to serialize.
+    Args:
+        my_obj (str): String to serialize.
 
-	"""
-	try:
-		return json.dumps(my_obj)
-	except TypeError:
-		message = str(my_obj) + " is not JSON serializable"
-		raise TypeError(message)
+    """
+    return json.dumps(my_obj)
