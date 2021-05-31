@@ -3,6 +3,7 @@
 In this module a single function that returns JSON of an object.
 """
 import json
+from typing import Type
 
 
 def to_json_string(my_obj):
@@ -13,4 +14,8 @@ def to_json_string(my_obj):
 		my_obj (str): String to serialize.
 
 	"""
-	return json.dumps(my_obj)
+	try:
+		return json.dumps(my_obj)
+	except TypeError:
+		message = str(my_obj) + " is not JSON serializable"
+		raise TypeError(message)
