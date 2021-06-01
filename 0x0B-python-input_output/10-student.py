@@ -20,7 +20,7 @@ class Student:
 
     def to_json(self, attrs=None):
 
-        if attrs == None:
+        if attrs is None:
             return self.__dict__
 
         is_list_string = True
@@ -39,4 +39,3 @@ class Student:
             return answer
         else:
             return self.__dict__
-
