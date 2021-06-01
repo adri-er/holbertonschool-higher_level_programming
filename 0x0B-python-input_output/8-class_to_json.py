@@ -3,7 +3,6 @@
 In this module a single function that returns dictionary
 description of an object.
 """
-import json
 
 
 def class_to_json(obj):
