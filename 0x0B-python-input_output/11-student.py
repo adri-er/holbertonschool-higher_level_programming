@@ -43,5 +43,5 @@ class Student:
 
     def reload_from_json(self, json):
         """ Replaces all attributes of the students instance. """
-        for attribute in list(self.__dict__.keys()):
-            self.attribute = json[attribute]
+        for key in list(json.keys()):
+            setattr(self, key, json[key])
