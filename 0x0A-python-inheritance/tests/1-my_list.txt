@@ -1,0 +1,44 @@
+===============================
+Test cases for 1-my_list.py
+===============================
+Numbers
+=======
+``print_sorted()`` prints the components of a list sorted
+Check if the file has root permission
+        >>> import os
+    >>> os.access('1-my_list.py', os.X_OK)
+    True
+	>>> os.access('1-my_list.py', os.F_OK)
+	True
+
+Check normal use with empty, repeated numbers, unique numbers, one value, multiple values
+    >>> MyList = __import__("1-my_list").MyList
+	>>> my_list = MyList()
+	>>> my_list.print_sorted()
+	[]
+	>>> my_list.append(3)
+	>>> my_list.print_sorted()
+	[3]
+	>>> a = [2, 1]
+	>>> my_list.extend(a)
+	>>> my_list.print_sorted()
+	[1, 2, 3]
+	>>> my_list.append(2)
+	>>> my_list.print_sorted()
+	[1, 2, 2, 3]
+	>>> my_list.print_sorted()
+	[1, 2, 2, 3]
+	>>> my_list.append(3.3)
+	>>> my_list.print_sorted()
+	[1, 2, 2, 3, 3.3]
+
+
+Case a parameter is passed:
+        >>> my_list.print_sorted(80)
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() takes 1 positional argument but 2 were given
+	>>> my_list.print_sorted(180, 200)
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() takes 1 positional argument but 3 were given
