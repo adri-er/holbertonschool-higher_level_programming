@@ -11,6 +11,4 @@ def inherits_from(obj, a_class):
         a_class (class): class to see coincidence of object.
 
     """
-    if issubclass(type(obj), a_class) or isinstance(obj, a_class) is True:
-        return True
-    return False
+    return issubclass(type(obj), a_class)
