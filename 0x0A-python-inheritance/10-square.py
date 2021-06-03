@@ -41,7 +41,9 @@ class Rectangle(BaseGeometry):
 
 
 class Square(Rectangle):
-    """ Inherited class from rectangle. """
+    """ Inherited class from rectangle.
+    Is an inheritance from the Rectangle class.
+    This class has the attirbute height and width."""
 
     def __init__(self, size):
         """ Initialization of a square.
@@ -50,9 +52,9 @@ class Square(Rectangle):
             size (int): size of the square.
         """
         self.integer_validator("size", size)
-        super().__init__(size, size)
+        super().__init__(self, size, size)
         self.__size = size
 
     def area(self):
         """ Determines the area of square. """
-        return (self.__size * self.__size)
+        return self.__size * self.__size

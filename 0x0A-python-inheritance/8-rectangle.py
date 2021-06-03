@@ -18,7 +18,9 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
-    """ Class that represents a rectangle. """
+    """ Class that represents a rectangle.
+    Inherits from basegeometry, it can use its methods.
+    BaseGeometry doesn't have attributes. """
 
     def __init__(self, width, height):
         """ Initialization method for a rectangle validating value.
@@ -27,6 +29,6 @@ class Rectangle(BaseGeometry):
             height (int): integer represents the height
         """
         self.integer_validator('width', width)
-        self.integer_validator('height', height)
         self.__width = width
+        self.integer_validator('height', height)
         self.__height = height
