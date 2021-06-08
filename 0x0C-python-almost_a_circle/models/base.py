@@ -25,6 +25,7 @@ class Base:
                 msg = "id must be a positive integer greater than 0"
                 raise ValueError(msg)
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """ Returns json string representation of a list of dictionaries.
 
@@ -32,7 +33,7 @@ class Base:
             list_dictionaries (list): list with dictionaries that representobj.
 
         """
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
