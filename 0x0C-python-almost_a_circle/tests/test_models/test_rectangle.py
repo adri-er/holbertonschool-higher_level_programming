@@ -521,3 +521,35 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle(1, 2, 3, 4)
         dictionary = {"id": 3, "width": 1, "height": 2, "x": 3, "y": 4}
         self.assertEqual(r4.to_dictionary(), dictionary)
+
+    def test_to_json_string(self):
+        """ Test to JSON string method """
+
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertIn("\"y\": 8", output)
+            self.assertIn("\"x\": 2", output)
+            self.assertIn("\"id\": 1", output)
+            self.assertIn("\"width\": 10", output)
+            self.assertIn("\"height\": 7", output)
+            self.assertIn("\"y\": 0", output)
+            self.assertIn("\"x\": 0", output)
+            self.assertIn("\"id\": 2", output)
+            self.assertIn("\"width\": 2", output)
+            self.assertIn("\"height\": 4", output)
+
+        Rectangle.save_to_file([])
+
+        with open("Rectangle.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertEqual(output, "[]\n")

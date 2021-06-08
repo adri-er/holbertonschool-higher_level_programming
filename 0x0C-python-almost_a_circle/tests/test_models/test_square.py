@@ -388,3 +388,33 @@ class TestSquare(unittest.TestCase):
         s4 = Square(1)
         dictionary = {"id": 3, "size": 1, "x": 0, "y": 0}
         self.assertEqual(s4.to_dictionary(), dictionary)
+
+    def test_to_json_string(self):
+        """ Test to JSON string method """
+
+        s1 = Square(10, 7, 2)
+        s2 = Square(2, 4)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertIn("\"y\": 2", output)
+            self.assertIn("\"x\": 7", output)
+            self.assertIn("\"id\": 1", output)
+            self.assertIn("\"size\": 10", output)
+            self.assertIn("\"y\": 0", output)
+            self.assertIn("\"x\": 4", output)
+            self.assertIn("\"id\": 2", output)
+            self.assertIn("\"size\": 2", output)
+
+        Square.save_to_file([])
+
+        with open("Square.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertEqual(output, "[]\n")
