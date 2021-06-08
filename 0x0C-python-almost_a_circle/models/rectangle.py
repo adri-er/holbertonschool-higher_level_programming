@@ -48,7 +48,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, height):
-        """ Assign a value to the height. 
+        """ Assign a value to the height.
 
         Arg:
             height (int): Height of the rectangle.
@@ -70,7 +70,7 @@ class Rectangle(Base):
         """ Assigns a value to x coordinate.
 
         Args:
-            x (int): horixontal coordinate of rectangle location. 
+            x (int): horixontal coordinate of rectangle location.
         """
         if type(x) != int:
             raise TypeError("x must be an integer")

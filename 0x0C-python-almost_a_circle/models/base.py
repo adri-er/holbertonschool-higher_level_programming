@@ -33,7 +33,7 @@ class Base:
         """ Returns json string representation of a list of dictionaries.
 
         Args:
-            list_dictionaries (list): list with dictionaries that represent obj.
+            list_dictionaries (list): list with dictionaries that representobj.
 
         """
         if list_dictionaries is None or len(list_dictionaries) == 0:
