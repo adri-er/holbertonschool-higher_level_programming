@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ In this module, testing related to Base class will be done. """
 import unittest
+import sys
+from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
 # Check message or just exception raised?
@@ -14,43 +16,28 @@ def setUp():
 class TestRectangle(unittest.TestCase):
     """ Test the Rectangle class that inherits from Base. """
 
-    def test_init(self):
+    def test_1init(self):
         """ Test cases of normal initialization """
 
         # 5 parameters
         r2 = Rectangle(1, 2, 3, 4, 10)
-        ans = [1, 2, 3, 4, 10]
-        self.assertEqual(r2.id, ans[-1])
-        # self.assertEqual([r2.__width, r2.__height,
-        # r2.__x, r2.__y, r2.id], ans)
+        self.assertEqual(r2.id, 10)
 
         # 4 parameters
         r3 = Rectangle(1, 2, 3, 4)
-        ans = [2, 1, 2, 3, 1]
-        self.assertEqual(r3.id, ans[-1])
-        # self.assertEqual([r3.__width, r3.__height,
-        # r3.__x, r3.__y, r3.id], ans)
+        self.assertEqual(r3.id, 1)
 
         # 3 parameters
         r4 = Rectangle(1, 2, 3)
-        ans = [1, 2, 3, 0, 2]
-        self.assertEqual(r4.id, ans[-1])
-        # self.assertEqual([r4.__width, r4.__height,
-        # r4.__x, r4.__y, r4.id], ans)
+        self.assertEqual(r4.id, 2)
 
         # 2 parameters
         r1 = Rectangle(3, 5)
-        ans = [3, 5, 0, 0, 3]
-        self.assertEqual(r1.id, ans[-1])
-        # self.assertEqual([r1.__width, r1.__height,
-        # r1.__x, r1.__y, r1.id], ans)
+        self.assertEqual(r1.id, 3)
 
         # 5 parameters - Initialize in 0 x and y
         r2 = Rectangle(1, 2, 0, 0)
-        ans = [1, 2, 0, 0, 4]
-        self.assertEqual(r2.id, ans[-1])
-        # self.assertEqual([r2.__width, r2.__height,
-        # r2.__x, r2.__y, r2.id], ans)
+        self.assertEqual(r2.id, 4)
 
     def test_failure_parameters(self):
         """ Cases additional, none or less parameters are passed. """
@@ -266,173 +253,259 @@ class TestRectangle(unittest.TestCase):
 
     def test_display(self):
         """ Test case to display the rectangle. """
+        stdout_line = sys.stdout
 
         # 2 parameters
+        out = StringIO()
+        sys.stdout = out
         r34 = Rectangle(3, 2)
-        self.assertEqual(r34.display(), "###\n###\n###\n")
+        r34.display()
+        output = out.getvalue()
+        self.assertEqual(output, "###\n###\n")
 
         # 3 parameters
+        out = StringIO()
+        sys.stdout = out
         r35 = Rectangle(2, 3, 2)
-        self.assertEqual(r35.display(), "  ##\n  ##\n  ##\n  ##\n")
+        r35.display()
+        output = out.getvalue()
+        self.assertEqual(output, "  ##\n  ##\n  ##\n")
 
         # 4 parameters
+        out = StringIO()
+        sys.stdout = out
         r36 = Rectangle(3, 5, 2, 1)
-        self.assertEqual(
-            r36.display(), "\n  ###\n  ###\n  ###\n  ###\n  ###\n")
+        r36.display()
+        output = out.getvalue()
+        self.assertEqual(output, "\n  ###\n  ###\n  ###\n  ###\n  ###\n")
 
         # 5 parameters
+        out = StringIO()
+        sys.stdout = out
         r37 = Rectangle(1, 2, 0, 0, 12)
-        self.assertEqual(r37.display(), "#\n#\n")
+        r37.display()
+        output = out.getvalue()
+        self.assertEqual(output, "#\n#\n")
 
     def test_print_object(self):
         """ Test case to print rectangle info. """
 
         # 2 parameters
+        out = StringIO()
+        sys.stdout = out
         r38 = Rectangle(3, 2)
-        self.assertEqual(print(r38), "[Rectangle] (12) 0/0 - 3/2")
+        r38.id = 12
+        print(r38)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (12) 0/0 - 3/2\n")
 
         # 3 parameters
+        out = StringIO()
+        sys.stdout = out
         r39 = Rectangle(2, 3, 2)
-        self.assertEqual(print(r39), "[Rectangle] (13) 2/0 - 2/3")
+        r39.id = 13
+        print(r39)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (13) 2/0 - 2/3\n")
 
         # 4 parameters
+        out = StringIO()
+        sys.stdout = out
         r40 = Rectangle(3, 5, 2, 1)
-        self.assertEqual(print(r40), "[Rectangle] (14) 2/1 - 3/5")
+        r40.id = 14
+        print(r40)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (14) 2/1 - 3/5\n")
 
         # 5 parameters
+        out = StringIO()
+        sys.stdout = out
         r41 = Rectangle(1, 2, 0, 0, 20)
-        self.assertEqual(print(r41), "[Rectangle] (20) 0/0 - 1/2")
+        print(r41)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (20) 0/0 - 1/2\n")
 
     def test_update(self):
         """ Test case to update rectangles attributes. """
 
         # UPDATE NONE
+        out = StringIO()
+        sys.stdout = out
         r42 = Rectangle(10, 10, 10, 10)
         r42.update()
-        self.assertEqual(print(r42), "[Rectangle] (15) 10/10 - 10/10")
+        r42.id = 15
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (15) 10/10 - 10/10\n")
 
         # UPDATE ARGS
         # update 1 parameter (id)
+        out = StringIO()
+        sys.stdout = out
         r42.update(89)
-        self.assertEqual(print(r42), "[Rectangle] (89) 10/10 - 10/10")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 10/10 - 10/10\n")
 
         # update 2 parameter (id, width)
+        out = StringIO()
+        sys.stdout = out
         r42.update(89, 2)
-        self.assertEqual(print(r42), "[Rectangle] (89) 10/10 - 2/10")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 10/10 - 2/10\n")
 
         # update 3 parameter (id, width, height)
+        out = StringIO()
+        sys.stdout = out
         r42.update(89, 2, 3)
-        self.assertEqual(print(r42), "[Rectangle] (89) 10/10 - 2/3")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 10/10 - 2/3\n")
 
         # update 4 parameter (id, width, height, x)
+        out = StringIO()
+        sys.stdout = out
         r42.update(89, 2, 3, 4)
-        self.assertEqual(print(r42), "[Rectangle] (89) 4/10 - 2/3")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 4/10 - 2/3\n")
 
         # update 5 parameter (id, width, height, x, y)
+        out = StringIO()
+        sys.stdout = out
         r42.update(89, 2, 3, 4, 5)
-        self.assertEqual(print(r42), "[Rectangle] (89) 4/5 - 2/3")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 4/5 - 2/3\n")
 
         # more than 5 parameters passed
+        out = StringIO()
+        sys.stdout = out
         r42.update(89, 2, 3, 4, 5, 6)
-        self.assertEqual(print(r42), "[Rectangle] (89) 4/5 - 2/3")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 4/5 - 2/3\n")
         # Should the upper part be an error?? args length specific?
 
         # UPDATE KWARGS
         # update 2 parameter
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1)
-        self.assertEqual(print(r42), "[Rectangle] (89) 4/5 - 2/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 4/5 - 2/1\n")
 
         # update 2 parameters
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1, width=1)
-        self.assertEqual(print(r42), "[Rectangle] (89) 4/5 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 4/5 - 1/1\n")
 
         # update 3 parameters
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1, width=1, x=2)
-        self.assertEqual(print(r42), "[Rectangle] (89) 2/5 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 2/5 - 1/1\n")
 
         # update 4 parameters
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1, width=1, x=2, y=3)
-        self.assertEqual(print(r42), "[Rectangle] (89) 2/3 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (89) 2/3 - 1/1\n")
 
         # update 5 parameters
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1, width=1, x=2, y=3, id=90)
-        self.assertEqual(print(r42), "[Rectangle] (90) 2/3 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (90) 2/3 - 1/1\n")
 
         # update more tha 5 parameters
+        out = StringIO()
+        sys.stdout = out
         r42.update(height=1, width=1, x=2, y=3, id=90, depth=90)
-        self.assertEqual(print(r42), "[Rectangle] (90) 2/3 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (90) 2/3 - 1/1\n")
 
         # UPDATE having both cases
+        out = StringIO()
+        sys.stdout = out
         r42.update(201, height=3, width=2, x=4, y=7, id=98)
-        self.assertEqual(print(r42), "[Rectangle] (201) 2/3 - 1/1")
+        print(r42)
+        output = out.getvalue()
+        self.assertEqual(output, "[Rectangle] (201) 2/3 - 1/1\n")
 
         # UPDATE with errors
         # error with size (id, width)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r42.update(500, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r42.update(500, -1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r42.update(500, 0)
 
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r42.update(width=3.1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r42.update(width=-1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r42.update(width=0)
 
         # error with height (id, width, height)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r42.update(500, 3, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "height must be > 0"):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r42.update(500, 3, -1)
 
-        with self.assertRaisesRegex(TypeError, "height must be > 0"):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r42.update(500, 3, 0)
 
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r42.update(height=3.1)
 
-        with self.assertRaisesRegex(TypeError, "height must be > 0"):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r42.update(height=-1)
 
-        with self.assertRaisesRegex(TypeError, "height must be > 0"):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r42.update(height=0)
 
         # error with x (id, width, height, x)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             r42.update(500, 10, 3, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "x must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             r42.update(500, 10, 3, -1)
 
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             r42.update(x=3.1)
 
-        with self.assertRaisesRegex(TypeError, "x must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             r42.update(x=-1)
 
         # error with y (id, width, height, x, y)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            r42.update(500, 10, 10, 3.1)
+            r42.update(500, 10, 10, 10, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "y must be >= 0"):
-            r42.update(500, 10, 10, -1)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r42.update(500, 10, 10, 10, -1)
 
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r42.update(y=3.1)
 
-        with self.assertRaisesRegex(TypeError, "y must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r42.update(y=-1)
-
-    def test_to_dictionary(self):
-        """ Test function that returns a dictionary. """
-        r43 = Rectangle(1, 2, 3, 4, 5)
-        dictionary = "{'id': 5, 'width': 1, 'height': 2, 'x': 3, 'y': 4}"
-        self.assertEqual(str(r43.to_dictionary()), dictionary)
