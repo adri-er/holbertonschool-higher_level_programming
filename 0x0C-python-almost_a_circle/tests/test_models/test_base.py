@@ -7,6 +7,10 @@ from models.base import Base
 class TestBase(unittest.TestCase):
     """ Test the base class """
 
+    def tearDown(self):
+        """ Create environment. """
+        Base.reset_nb()
+
     def test_init(self):
         """ Test cases of normal initialization """
         b1 = Base()

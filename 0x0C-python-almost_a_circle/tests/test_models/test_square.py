@@ -1,12 +1,18 @@
 #!/usr/bin/python3
 """ In this module, testing related to Base class will be done. """
 import unittest
+import sys
+from io import StringIO
 from models.square import Square
 from models.base import Base
 
 
 class TestSquare(unittest.TestCase):
     """ Test the Square class """
+
+    def tearDown(self):
+        """ Create environment """
+        Base.reset_nb()
 
     def test_init(self):
         """ Test cases of normal initialization """
@@ -151,145 +157,216 @@ class TestSquare(unittest.TestCase):
         """ Test case to display the rectangle. """
 
         # 1 parameter
+        out = StringIO()
+        sys.stdout = out
         s27 = Square(1)
-        self.assertEqual(s27.display(), "#\n")
+        s27.display()
+        output = out.getvalue()
+        self.assertEqual(output, "#\n")
 
         # 2 parameters
+        out = StringIO()
+        sys.stdout = out
         s28 = Square(2, 2)
-        self.assertEqual(s27.display(), "  ##\n  ##\n")
+        s28.display()
+        output = out.getvalue()
+        self.assertEqual(output, "  ##\n  ##\n")
 
         # 3 parameters
+        out = StringIO()
+        sys.stdout = out
         s29 = Square(3, 3, 2)
-        self.assertEqual(s29.display(), "\n\n   ###\n   ###\n   ###\n")
+        s29.display()
+        output = out.getvalue()
+        self.assertEqual(output, "\n\n   ###\n   ###\n   ###\n")
 
         # 4 parameters
+        out = StringIO()
+        sys.stdout = out
         s30 = Square(3, 3, 2, 192)
-        self.assertEqual(s29.display(), "\n\n   ###\n   ###\n   ###\n")
+        s30.display()
+        output = out.getvalue()
+        self.assertEqual(output, "\n\n   ###\n   ###\n   ###\n")
 
     def test_print_object(self):
         """ Test case to print Square info. """
 
         # 1 parameter
+        out = StringIO()
+        sys.stdout = out
         s31 = Square(3)
-        self.assertEqual(print(s31), "[Square] (14) 0/0 - 3")
+        print(s31)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (1) 0/0 - 3\n")
 
         # 2 parameters
+        out = StringIO()
+        sys.stdout = out
         s32 = Square(3, 5)
-        self.assertEqual(print(s32), "[Square] (15) 5/0 - 3")
+        print(s32)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (2) 5/0 - 3\n")
 
         # 3 parameters
+        out = StringIO()
+        sys.stdout = out
         s33 = Square(3, 5, 8)
-        self.assertEqual(print(s33), "[Square] (16) 5/8 - 3")
+        print(s33)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (3) 5/8 - 3\n")
 
         # 4 parameters
+        out = StringIO()
+        sys.stdout = out
         s33 = Square(3, 5, 8, 99)
-        self.assertEqual(print(s33), "[Square] (99) 5/8 - 3")
+        print(s33)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (99) 5/8 - 3\n")
 
     def test_update(self):
         """ Test case to update rectangles attributes. """
 
         # UPDATE NONE
+        out = StringIO()
+        sys.stdout = out
         s34 = Square(10, 10, 10, 10)
         s34.update()
-        self.assertEqual(print(s34), "[Square] (10) 10/10 - 10")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (10) 10/10 - 10\n")
 
         # UPDATE ARGS
         # update 1 parameter (id)
+        out = StringIO()
+        sys.stdout = out
         s34.update(98)
-        self.assertEqual(print(s34), "[Square] (98) 10/10 - 10")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 10/10 - 10\n")
 
         # update 2 parameter (id, size)
+        out = StringIO()
+        sys.stdout = out
         s34.update(98, 5)
-        self.assertEqual(print(s34), "[Square] (98) 10/10 - 5")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 10/10 - 5\n")
 
         # update 3 parameter (id, size, x)
+        out = StringIO()
+        sys.stdout = out
         s34.update(98, 5, 7)
-        self.assertEqual(print(s34), "[Square] (98) 7/10 - 5")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 7/10 - 5\n")
 
         # update 4 parameter (id, size, x, y)
+        out = StringIO()
+        sys.stdout = out
         s34.update(98, 5, 7, 9)
-        self.assertEqual(print(s34), "[Square] (98) 7/9 - 5")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 7/9 - 5\n")
 
         # more than 4 parameters passed (ignores the rest)
+        out = StringIO()
+        sys.stdout = out
         s34.update(89, 51, 71, 91, 10)
-        self.assertEqual(print(s34), "[Square] (89) 71/91 - 51")
-        # ---------------------------------------------------------
-        # Should the right before part be an error?? args length specific?
-        # ---------------------------------------------------------
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (89) 71/91 - 51\n")
 
         # UPDATE KWARGS
         # update 1 param (id)
+        out = StringIO()
+        sys.stdout = out
         s34.update(id=98)
-        self.assertEqual(print(s34), "[Square] (98) 71/91 - 51")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 71/91 - 51\n")
 
         # update 2 parameters (id, size)
+        out = StringIO()
+        sys.stdout = out
         s34.update(size=20, id=98)
-        self.assertEqual(print(s34), "[Square] (98) 71/91 - 20")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 71/91 - 20\n")
 
         # update 3 parameters (id, size, x)
+        out = StringIO()
+        sys.stdout = out
         s34.update(size=20, id=98, x=3)
-        self.assertEqual(print(s34), "[Square] (98) 3/91 - 20")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 3/91 - 20\n")
 
         # update 4 parameters (id, size, x, y)
+        out = StringIO()
+        sys.stdout = out
         s34.update(y=7, id=98, size=20, x=3)
-        self.assertEqual(print(s34), "[Square] (98) 3/7 - 20")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 3/7 - 20\n")
 
         # update more than 4 parameters (id, size, x, y, depth)
+        out = StringIO()
+        sys.stdout = out
         s34.update(y=7, id=98, size=20, depth=27, x=3)
-        self.assertEqual(print(s34), "[Square] (98) 3/7 - 20")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (98) 3/7 - 20\n")
 
         # UPDATE having both cases
+        out = StringIO()
+        sys.stdout = out
         s34.update(500, y=17, id=103, size=200, depth=270, x=93)
-        self.assertEqual(print(s34), "[Square] (500) 3/7 - 20")
+        print(s34)
+        output = out.getvalue()
+        self.assertEqual(output, "[Square] (500) 3/7 - 20\n")
 
         # UPDATE with errors
         # error with size (id, size)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             s34.update(500, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s34.update(500, -1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s34.update(500, 0)
 
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s34.update(width=3.1)
+            s34.update(size=3.1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
-            s34.update(width=-1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s34.update(size=-1)
 
-        with self.assertRaisesRegex(TypeError, "width must be > 0"):
-            s34.update(width=0)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s34.update(size=0)
 
         # error with x (id, size, x)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             s34.update(500, 10, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "x must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             s34.update(500, 10, -1)
 
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             s34.update(x=3.1)
 
-        with self.assertRaisesRegex(TypeError, "x must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             s34.update(x=-1)
 
         # error with y (id, size, x, y)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             s34.update(500, 10, 10, 3.1)
 
-        with self.assertRaisesRegex(TypeError, "y must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             s34.update(500, 10, 10, -1)
 
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             s34.update(y=3.1)
 
-        with self.assertRaisesRegex(TypeError, "y must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             s34.update(y=-1)
-
-    def test_to_dictionary(self):
-        """ Test function that returns a dictionary. """
-        s35 = Square(1, 2, 3, 4)
-        dictionary = "{'id': 4, 'size': 1, 'x': 2, 'y': 3}"
-        self.assertEqual(s35.to_dictionary(), dictionary)

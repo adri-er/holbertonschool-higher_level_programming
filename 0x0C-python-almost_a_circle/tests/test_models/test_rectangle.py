@@ -4,11 +4,16 @@ import unittest
 import sys
 from io import StringIO
 from models.rectangle import Rectangle
+from models.base import Base
 # Check message or just exception raised?
 
 
 class TestRectangle(unittest.TestCase):
     """ Test the Rectangle class that inherits from Base. """
+
+    def tearDown(self):
+        """ Create environment. """
+        Base.reset_nb()
 
     def test_1init(self):
         """ Test cases of normal initialization """
@@ -288,28 +293,25 @@ class TestRectangle(unittest.TestCase):
         out = StringIO()
         sys.stdout = out
         r38 = Rectangle(3, 2)
-        r38.id = 12
         print(r38)
         output = out.getvalue()
-        self.assertEqual(output, "[Rectangle] (12) 0/0 - 3/2\n")
+        self.assertEqual(output, "[Rectangle] (1) 0/0 - 3/2\n")
 
         # 3 parameters
         out = StringIO()
         sys.stdout = out
         r39 = Rectangle(2, 3, 2)
-        r39.id = 13
         print(r39)
         output = out.getvalue()
-        self.assertEqual(output, "[Rectangle] (13) 2/0 - 2/3\n")
+        self.assertEqual(output, "[Rectangle] (2) 2/0 - 2/3\n")
 
         # 4 parameters
         out = StringIO()
         sys.stdout = out
         r40 = Rectangle(3, 5, 2, 1)
-        r40.id = 14
         print(r40)
         output = out.getvalue()
-        self.assertEqual(output, "[Rectangle] (14) 2/1 - 3/5\n")
+        self.assertEqual(output, "[Rectangle] (3) 2/1 - 3/5\n")
 
         # 5 parameters
         out = StringIO()
@@ -327,10 +329,9 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = out
         r42 = Rectangle(10, 10, 10, 10)
         r42.update()
-        r42.id = 15
         print(r42)
         output = out.getvalue()
-        self.assertEqual(output, "[Rectangle] (15) 10/10 - 10/10\n")
+        self.assertEqual(output, "[Rectangle] (1) 10/10 - 10/10\n")
 
         # UPDATE ARGS
         # update 1 parameter (id)
@@ -380,7 +381,6 @@ class TestRectangle(unittest.TestCase):
         print(r42)
         output = out.getvalue()
         self.assertEqual(output, "[Rectangle] (89) 4/5 - 2/3\n")
-        # Should the upper part be an error?? args length specific?
 
         # UPDATE KWARGS
         # update 2 parameter

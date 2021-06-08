@@ -25,6 +25,11 @@ class Base:
                 msg = "id must be a positive integer greater than 0"
                 raise ValueError(msg)
 
+    @classmethod
+    def reset_nb(self):
+        """ Resets the number of instances created. """
+        self.__nb_objects = 0
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """ Returns json string representation of a list of dictionaries.
