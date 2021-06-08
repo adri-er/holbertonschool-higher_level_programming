@@ -48,12 +48,14 @@ class Base:
         """
         filename = "{}.json".format(cls.__name__)
         list_dict = []
-        for i in list_objs:
-            list_dict.append(i.to_dictionary())
+        if list_objs:
+            for i in list_objs:
+                list_dict.append(i.to_dictionary())
         message_write = cls.to_json_string(list_dict)
-        with open(filename, "w") as file:
+        with open(filename, "w", encoding='utf-8') as file:
             file.write(message_write)
 
+    @staticmethod
     def from_json_string(json_string):
         """ Returns the list of the JSON string representation json_string. """
         if json_string is None or len(json_string) == 0:

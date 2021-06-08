@@ -4,13 +4,7 @@ import unittest
 import sys
 from io import StringIO
 from models.rectangle import Rectangle
-from models.base import Base
 # Check message or just exception raised?
-
-
-def setUp():
-    """ Sets up the module by restarting the counter. """
-    Base.__nb_objects = 0
 
 
 class TestRectangle(unittest.TestCase):

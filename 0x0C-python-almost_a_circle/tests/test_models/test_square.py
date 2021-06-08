@@ -5,11 +5,6 @@ from models.square import Square
 from models.base import Base
 
 
-def setUpModule():
-    """ Sets up the module by restarting the counter. """
-    Base.__nb_objects = 0
-
-
 class TestSquare(unittest.TestCase):
     """ Test the Square class """
 

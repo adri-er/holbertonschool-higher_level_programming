@@ -4,11 +4,6 @@ import unittest
 from models.base import Base
 
 
-def setUpModule():
-    """ Sets up the module by restarting the counter. """
-    Base.__nb_objects = 0
-
-
 class TestBase(unittest.TestCase):
     """ Test the base class """
 
