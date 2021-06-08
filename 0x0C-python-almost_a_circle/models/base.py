@@ -11,9 +11,6 @@ class Base:
         id (int): the identification of the objetc.
 
     """
-    # CHECK THAT THE VALUES DON'T REPEAT THEMSELVES
-    # (That someone puts 1 and then someone tries giving an id 1)
-    # Check if it can be negative
     __nb_objects = 0
 
     def __init__(self, id=None):
