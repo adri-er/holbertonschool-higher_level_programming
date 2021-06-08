@@ -370,3 +370,21 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             s34.update(y=-1)
+
+    def test_to_dictionary(self):
+        """ Test to_dictionary function is addecuate. """
+        s1 = Square(1, 2, 3, 4)
+        dictionary = {"id": 4, "size": 1, "x": 2, "y": 3}
+        self.assertEqual(s1.to_dictionary(), dictionary)
+
+        s2 = Square(1, 2, 3)
+        dictionary = {"id": 1, "size": 1, "x": 2, "y": 3}
+        self.assertEqual(s2.to_dictionary(), dictionary)
+
+        s3 = Square(1, 2)
+        dictionary = {"id": 2, "size": 1, "x": 2, "y": 0}
+        self.assertEqual(s3.to_dictionary(), dictionary)
+
+        s4 = Square(1)
+        dictionary = {"id": 3, "size": 1, "x": 0, "y": 0}
+        self.assertEqual(s4.to_dictionary(), dictionary)

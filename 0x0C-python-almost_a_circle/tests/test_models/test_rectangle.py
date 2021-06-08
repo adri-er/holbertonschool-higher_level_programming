@@ -503,3 +503,21 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r42.update(y=-1)
+
+    def test_to_dictionary(self):
+        """ Test to_dictionary function is addecuate. """
+        r1 = Rectangle(1, 2, 3, 4, 12)
+        dictionary = {"id": 12, "width": 1, "height": 2, "x": 3, "y": 4}
+        self.assertEqual(r1.to_dictionary(), dictionary)
+
+        r2 = Rectangle(1, 2)
+        dictionary = {"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}
+        self.assertEqual(r2.to_dictionary(), dictionary)
+
+        r3 = Rectangle(1, 2, 3)
+        dictionary = {"id": 2, "width": 1, "height": 2, "x": 3, "y": 0}
+        self.assertEqual(r3.to_dictionary(), dictionary)
+
+        r4 = Rectangle(1, 2, 3, 4)
+        dictionary = {"id": 3, "width": 1, "height": 2, "x": 3, "y": 4}
+        self.assertEqual(r4.to_dictionary(), dictionary)
