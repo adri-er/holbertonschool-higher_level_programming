@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ In this module base class is defined """
 import json
-from typing import Type
 
 
 class Base:
