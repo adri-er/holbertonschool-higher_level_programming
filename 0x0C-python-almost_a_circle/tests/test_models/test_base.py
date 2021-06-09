@@ -35,3 +35,25 @@ class TestBase(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             b7 = Base(0)
+
+    def test_from_json_string(self):
+        """ Test the from json to string method, """
+        list_input = [
+            {'id': 89, 'size': 10},
+            {'id': 7, 'size': 1}
+        ]
+        json_list_input = Base.to_json_string(list_input)
+        list_output = Base.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+        list_input = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        json_list_input = Base.to_json_string(list_input)
+        list_output = Base.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+        self.assertEqual(Base.from_json_string(None), [])
+
+        self.assertEqual(Base.from_json_string("[]"), [])

@@ -554,16 +554,11 @@ class TestRectangle(unittest.TestCase):
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
 
-    def test_from_json_string(self):
-        """ Test the from json to string method, """
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertEqual(list_input, list_output)
-
-        self.assertEqual(Rectangle.from_json_string(None), [])
-
-        self.assertEqual(Rectangle.from_json_string("[]"), [])
+    def test_create(self):
+        """ Test the create class method. """
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(r1, r2)
+        self.assertFalse(r1 is r2)
+        # Try empty
