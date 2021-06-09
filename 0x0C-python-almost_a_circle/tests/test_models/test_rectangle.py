@@ -559,6 +559,6 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
-        self.assertEqual(r1, r2)
+        self.assertFalse(r1 == r2)
         self.assertFalse(r1 is r2)
         # Try empty

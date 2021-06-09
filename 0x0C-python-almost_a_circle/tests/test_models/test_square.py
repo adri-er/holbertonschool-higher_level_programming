@@ -424,6 +424,6 @@ class TestSquare(unittest.TestCase):
         r1 = Square(3, 5)
         r1_dictionary = r1.to_dictionary()
         r2 = Square.create(**r1_dictionary)
-        self.assertEqual(r1, r2)
+        self.assertFalse(r1 == r2)
         self.assertFalse(r1 is r2)
         # Try empty
