@@ -419,6 +419,15 @@ class TestSquare(unittest.TestCase):
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
 
+        Square.save_to_file(None)
+
+        with open("Square.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertEqual(output, "[]\n")
+
     def test_create(self):
         """ Test the create class method. """
         r1 = Square(3, 5)
