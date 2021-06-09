@@ -418,3 +418,17 @@ class TestSquare(unittest.TestCase):
             print(file.read())
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
+
+    def test_from_json_string(self):
+        """ Test the from json to string method, """
+        list_input = [
+            {'id': 89, 'size': 10},
+            {'id': 7, 'size': 1}
+        ]
+        json_list_input = Square.to_json_string(list_input)
+        list_output = Square.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+        self.assertEqual(Square.from_json_string(None), [])
+
+        self.assertEqual(Square.from_json_string("[]"), [])
