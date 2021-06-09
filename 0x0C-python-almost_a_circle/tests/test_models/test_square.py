@@ -427,3 +427,23 @@ class TestSquare(unittest.TestCase):
         self.assertFalse(r1 == r2)
         self.assertFalse(r1 is r2)
         # Try empty
+
+    def test_load_from_file(self):
+        """ Tests load from file json """
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+
+        list_squares_output = Square.load_from_file()
+
+        i = 0
+        for square in list_squares_output:
+            list_rect = ["[Square] (1) 0/0 - 5\n", "[Square] (2) 9/1 - 7\n"]
+            out = StringIO()
+            sys.stdout = out
+            print(square)
+            output = out.getvalue()
+            self.assertEqual(output, list_rect[i])
+            i += 1
