@@ -410,7 +410,7 @@ class TestSquare(unittest.TestCase):
             self.assertIn("\"id\": 2", output)
             self.assertIn("\"size\": 2", output)
 
-    def test_save_to_file_empty(self):
+    def test_save_to_file(self):
         """ Tests the save to file method. """
 
         Square.save_to_file([])
@@ -421,9 +421,6 @@ class TestSquare(unittest.TestCase):
             print(file.read())
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
-
-    def test_save_to_file_none(self):
-        """ Tests the save to file method. """
 
         Square.save_to_file(None)
 

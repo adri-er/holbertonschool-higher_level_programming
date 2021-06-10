@@ -547,7 +547,6 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file(self):
         """ Test save to file empty list """
-        
         Rectangle.save_to_file([])
 
         with open("Rectangle.json", "r") as file:
@@ -556,9 +555,6 @@ class TestRectangle(unittest.TestCase):
             print(file.read())
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
-
-    def test_save_to_file_none(self):
-        """ Tests the save to file method. """
 
         Rectangle.save_to_file(None)
 
