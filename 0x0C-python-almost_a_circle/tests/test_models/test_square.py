@@ -410,6 +410,9 @@ class TestSquare(unittest.TestCase):
             self.assertIn("\"id\": 2", output)
             self.assertIn("\"size\": 2", output)
 
+    def test_save_to_file(self):
+        """ Tests the save to file method. """
+
         Square.save_to_file([])
 
         with open("Square.json", "r") as file:
