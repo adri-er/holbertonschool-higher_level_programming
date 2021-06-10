@@ -96,7 +96,7 @@ class Base:
                 line = file.readline()
         except:
             return []
-        
+
         for dictionary in cls.from_json_string(line):
             new = cls.create(**dictionary)
             list_instances.append(new)
