@@ -92,10 +92,11 @@ class Base:
         filename = str(cls.__name__) + ".json"
         list_instances = []
         try:
-            file = open(filename, "r")
+            with open(filename, "r") as file:
+                line = file.readline()
         except:
             return []
-        line = file.readline()
+        
         for dictionary in cls.from_json_string(line):
             new = cls.create(**dictionary)
             list_instances.append(new)
