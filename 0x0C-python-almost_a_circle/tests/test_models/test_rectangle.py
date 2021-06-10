@@ -545,6 +545,9 @@ class TestRectangle(unittest.TestCase):
             self.assertIn("\"width\": 2", output)
             self.assertIn("\"height\": 4", output)
 
+    def test_save_to_file(self):
+        """ Test save to file empty list """
+        
         Rectangle.save_to_file([])
 
         with open("Rectangle.json", "r") as file:
