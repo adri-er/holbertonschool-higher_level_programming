@@ -554,6 +554,18 @@ class TestRectangle(unittest.TestCase):
             output = out.getvalue()
             self.assertEqual(output, "[]\n")
 
+    def test_save_to_file_none(self):
+        """ Tests the save to file method. """
+
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            out = StringIO()
+            sys.stdout = out
+            print(file.read())
+            output = out.getvalue()
+            self.assertEqual(output, "[]\n")
+
     def test_create(self):
         """ Test the create class method. """
         r1 = Rectangle(3, 5, 1)
