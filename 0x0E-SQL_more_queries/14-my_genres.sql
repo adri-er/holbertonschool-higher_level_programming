@@ -5,5 +5,5 @@ INNER JOIN tv_show_genres AS tsg
 ON ts.id = tsg.show_id
 INNER JOIN tv_genres AS tg
 ON tsg.genre_id = tg.id
-WHERE ts.name = 'DEXTER'
+WHERE ts.name = 'Dexter'
 ORDER BY tg.name ASC;
