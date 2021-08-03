@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const arrayValues = process.argv;
-const organizedArray = [0];
+const organizedArray = [];
 for (let i = 2; i < arrayValues.length; i++) {
   organizedArray[i - 2] = parseInt(arrayValues[i]);
 }
