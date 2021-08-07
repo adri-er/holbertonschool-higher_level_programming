@@ -3,11 +3,11 @@
 This module connects to a MySQL server and lists all
 states from a database.
 """
+import MySQLdb
+import sys
+
 
 if __name__ == "__main__":
-
-    import MySQLdb
-    import sys
 
     db = MySQLdb.connect("localhost", sys.argv[1], sys.argv[2], sys.argv[3])
 
