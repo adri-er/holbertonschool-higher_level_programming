@@ -21,6 +21,6 @@ if __name__ == "__main__":
     results = cursor.fetchall()
 
     for row in results:
-        print ("(" + str(row[0]) + ", '" + str(row[1]) + "')")
+        print("(" + str(row[0]) + ", '" + str(row[1]) + "')")
 
     db.close()

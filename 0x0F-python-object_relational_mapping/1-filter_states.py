@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ This module connects to a MySQL server and lists all
 states from a database. """
+
+
 if __name__ == "__main__":
 
     import MySQLdb
@@ -19,7 +21,7 @@ if __name__ == "__main__":
     printed = []
     for row in results:
         if (row[1][0] == 'N' and row[1] not in printed):
-            print ("(" + str(row[0]) + ", '" + str(row[1]) + "')")
+            print("(" + str(row[0]) + ", '" + str(row[1]) + "')")
             printed.append(row[1])
 
     db.close()

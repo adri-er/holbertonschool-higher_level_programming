@@ -4,19 +4,19 @@
 if __name__ == "__main__":
     from model_state import Base, State
     from sqlalchemy.ext.declarative import declarative_base
-    import sys
+    from sys import argv
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
     engine = create_engine("mysql://{}:{}@localhost/{}".
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]))
+                           format(argv[1], argv[2], argv[3]))
 
     Session = sessionmaker(bind=engine)
-
     session = Session()
 
     i = 0
-    for state in session.query(State).order_by(State.id).filter(State.name == sys.argv[4]):
+    q = session.query(State).order_by(State.id).filter(State.name == argv[4])
+    for state in q:
         i += 1
         print(str(state.id) + ": " + state.name)
 

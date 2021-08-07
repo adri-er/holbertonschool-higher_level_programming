@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ This module connects to a MySQL server and lists all
 states that match a specified name in argv. """
+
+
 if __name__ == "__main__":
 
     import MySQLdb
@@ -15,6 +17,6 @@ if __name__ == "__main__":
     results = cursor.fetchall()
 
     for row in results:
-        print ("(" + str(row[0]) + ", '" + str(row[1]) + "')")
+        print("(" + str(row[0]) + ", '" + str(row[1]) + "')")
 
     db.close()

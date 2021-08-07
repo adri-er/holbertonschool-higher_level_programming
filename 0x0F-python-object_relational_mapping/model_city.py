@@ -7,11 +7,12 @@ from sys import argv
 
 engine = create_engine("mysql://{}:{}@localhost" +
                        ":3306/{}".format(argv[1], argv[2], argv[3]))
-
 Base = declarative_base()
 
+
 class City(Base):
+    """ Defines  a table for cities in the US """
     __tablename__ = 'cities'
     id = Column(Integer, primary_key=True, nullable=False)
-    state_id = Column(Integer, ForeignKey('State.id'), nullable = False)
+    state_id = Column(Integer, ForeignKey('State.id'), nullable=False)
     name = Column(String(128), nullable=False)
