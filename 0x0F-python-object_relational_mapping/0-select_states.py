@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-""" This module connects to a MySQL server and lists all
-states from a database. """
+"""
+This module connects to a MySQL server and lists all
+states from a database.
+"""
+
 if __name__ == "__main__":
 
     import MySQLdb
