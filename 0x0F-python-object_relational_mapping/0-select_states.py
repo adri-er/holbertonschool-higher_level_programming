@@ -9,7 +9,8 @@ import sys
 
 if __name__ == "__main__":
 
-    db = MySQLdb.connect("localhost", sys.argv[1], sys.argv[2], sys.argv[3])
+    db = MySQLdb.connect("localhost", port=3306, sys.argv[1],
+                         sys.argv[2], sys.argv[3])
 
     cursor = db.cursor()
 
