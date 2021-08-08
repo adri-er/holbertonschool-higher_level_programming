@@ -14,16 +14,14 @@ if __name__ == "__main__":
 
     cursor.execute("SELECT * FROM states INNER JOIN " +
                    "cities ON states.id = cities.state_id " +
-                   "WHERE states.name LIKE \'{}\'". format(sys.argv[4]) +
-                   " ORDER BY cities.id ASC")
-
+                   "WHERE states.name LIKE %s" +
+                   " ORDER BY cities.id ASC", (sys.argv[4], ))
     results = cursor.fetchall()
 
     for i in range(len(results)):
         print(str(results[i][4]), end='')
         if i != (len(results) - 1):
             print(", ", end='')
-        else:
-            print("")
+    print("")
 
     db.close()
