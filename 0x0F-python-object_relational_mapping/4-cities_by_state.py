@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     cursor.execute("SELECT * FROM states INNER JOIN " +
                    "cities ON states.id = cities.state_id" +
-                   "ORDER BY cities.id ASC")
+                   " ORDER BY cities.id ASC")
 
     results = cursor.fetchall()
 
