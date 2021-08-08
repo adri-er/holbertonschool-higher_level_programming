@@ -13,7 +13,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     sql = "SELECT * FROM states"
-    sql += " WHERE name=\'{}\' ORDER BY id".format(sys.argv[4])
+    sql += " WHERE name='{}' ORDER BY id ASC".format(sys.argv[4])
 
     cursor.execute(sql)
 
